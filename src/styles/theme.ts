@@ -8,13 +8,14 @@ export const themeProps = {
     }
   },
   colors: {
-    white: '#FFFFFF',
+    white: '#fff',
     gray100: '#e1e1e6',
-    gray300: '#a8a8b3',
-    gray800: '#29292e',
-    gray850: '#1f2729',
+    gray300: '#c4c4cc',
+    gray400: '#8d8d99',
+    gray600: '#323238',
+    gray700: '#29292e',
+    gray800: '#202024',
     gray900: '#121214',
-    cyan500: '#61dafb',
-    yellow500: '#eba417'
+    green500: '#00875f'
   }
 } as const

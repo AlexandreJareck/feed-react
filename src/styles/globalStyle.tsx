@@ -43,14 +43,7 @@ const GlobalStyles: GlobalStyleComponent<
     * {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-  
-      &::before,
-      &::after {
-        box-sizing: inherit;
-      }
+      box-sizing: border-box;      
     }
   
     ${({ theme }) => css`
@@ -61,6 +54,7 @@ const GlobalStyles: GlobalStyleComponent<
       body {
         background-color: ${theme.colors.gray900};
         color: ${theme.colors.white};
+        -webkit-font-smoothing: antialiased;
       }
 
       @media (max-width: 1080px) {
@@ -78,9 +72,10 @@ const GlobalStyles: GlobalStyleComponent<
       body,
       input,
       textarea,
-      select,
       button {
-        font: 400 1rem ${theme.font.family};
+        font-family: ${theme.font.family};
+        font-weight: 400;
+        font-size: 1rem;
       }
 
       button {
