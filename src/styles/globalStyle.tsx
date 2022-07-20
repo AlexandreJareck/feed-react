@@ -47,26 +47,10 @@ const GlobalStyles: GlobalStyleComponent<
     }
   
     ${({ theme }) => css`
-      html {
-        font-size: 62.5%;
-      }
-
       body {
         background-color: ${theme.colors.gray900};
         color: ${theme.colors.white};
         -webkit-font-smoothing: antialiased;
-      }
-
-      @media (max-width: 1080px) {
-        html {
-          font-size: 93.75%;
-        }
-      }
-
-      @media (max-width: 720px) {
-        html {
-          font-size: 87.5%;
-        }
       }
 
       body,
