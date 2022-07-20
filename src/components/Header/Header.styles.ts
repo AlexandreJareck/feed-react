@@ -1,4 +1,6 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Strong = styled.strong``
+export const Strong = styled.strong`
+  ${({ theme }) => css``}
+`
 export const Container = styled.header``
