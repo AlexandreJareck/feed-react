@@ -1,9 +1,12 @@
 import { ThemeProvider } from 'styled-components'
-import { Wrapper } from './App.styles'
+
 import { Header } from './components/Header'
+import { Post } from './components/Post'
 import { Sidebar } from './components/Sidebar'
-import GlobalStyles from './styles/globalStyle'
+
+import { Wrapper } from './App.styles'
 import { themeProps } from './styles/theme'
+import GlobalStyles from './styles/globalStyle'
 
 function App() {
   return (
@@ -13,8 +16,8 @@ function App() {
       <Wrapper>
         <Sidebar />
         <main>
-          <div>Post 1</div>
-          <div>Post 2</div>
+          <Post />
+          <Post />
         </main>
       </Wrapper>
 
