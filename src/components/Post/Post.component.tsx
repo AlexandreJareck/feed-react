@@ -1,5 +1,15 @@
 import React from 'react'
-import { Container, Header, Author, AuthorInfo, Content } from '.'
+import {
+  Container,
+  Header,
+  Author,
+  AuthorInfo,
+  Content,
+  Form,
+  Textarea,
+  Strong,
+  Button
+} from '.'
 import { Avatar } from '../Sidebar'
 
 export function Post() {
@@ -33,6 +43,16 @@ export function Post() {
           <a href="">#rocketseat</a>
         </p>
       </Content>
+
+      <Form>
+        <Strong>Deixe seu feedback</Strong>
+
+        <Textarea placeholder="Deixe um comentário" />
+
+        <Button>
+          <button type="submit">Publicar</button>
+        </Button>
+      </Form>
     </Container>
   )
 }

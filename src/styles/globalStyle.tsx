@@ -38,15 +38,20 @@ const GlobalStyles: GlobalStyleComponent<
     font-display: swap;
     src: local(''),
          url('../fonts/poppins-v15-latin-600.woff2') format('woff2'),
-  }
-  
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;      
-    }
+  }   
   
     ${({ theme }) => css`
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :focus {
+        outline: transparent;
+        box-shadow: 0 0 0 2px ${theme.colors.green500};
+      }
+
       body {
         background-color: ${theme.colors.gray900};
         color: ${theme.colors.white};
