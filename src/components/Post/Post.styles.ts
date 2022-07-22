@@ -123,3 +123,6 @@ export const Button = styled.footer`
     }
   `}
 `
+export const CommentList = styled.div`
+  margin-top: 2rem;
+`

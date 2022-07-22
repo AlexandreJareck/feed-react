@@ -8,8 +8,10 @@ import {
   Form,
   Textarea,
   Strong,
-  Button
+  Button,
+  CommentList
 } from '.'
+import { Comment } from '../Comment'
 import { Avatar } from '../Sidebar'
 
 export function Post() {
@@ -53,6 +55,12 @@ export function Post() {
           <button type="submit">Publicar</button>
         </Button>
       </Form>
+
+      <CommentList>
+        <Comment />
+        <Comment />
+        <Comment />
+      </CommentList>
     </Container>
   )
 }
