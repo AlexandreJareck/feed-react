@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   Container,
   Header,
@@ -11,15 +10,18 @@ import {
   Button,
   CommentList
 } from '.'
+import Avatar from '../Avatar/Avatar.component'
 import { Comment } from '../Comment'
-import { Avatar } from '../Sidebar'
 
 export function Post() {
   return (
     <Container>
       <Header>
         <Author>
-          <Avatar src="https://avatars.githubusercontent.com/u/49285794?v=4" />
+          <Avatar
+            src="https://avatars.githubusercontent.com/u/49285794?v=4"
+            hasBorder={true}
+          />
           <AuthorInfo>
             <strong>Alexandre Jareck</strong>
             <span>Fullstack</span>

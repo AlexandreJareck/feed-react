@@ -1,11 +1,16 @@
 import { ThumbsUp, Trash } from 'phosphor-react'
 import React from 'react'
 import { Container, Box, Content, Footer, Header, Author } from '.'
+import Avatar from '../Avatar/Avatar.component'
 
 export function Comment() {
   return (
     <Container>
-      <img src="https://avatars.githubusercontent.com/u/49285794?v=4" alt="" />
+      <Avatar
+        src="https://avatars.githubusercontent.com/u/49285794?v=4"
+        alt=""
+        hasBorder={false}
+      />
       <Box>
         <Content>
           <Header>

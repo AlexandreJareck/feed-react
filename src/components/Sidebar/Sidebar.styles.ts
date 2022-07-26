@@ -23,15 +23,6 @@ export const Image = styled.img`
   height: 72px;
   object-fit: cover;
 `
-export const Avatar = styled.img`
-  ${({ theme }) => css`
-    width: calc(3rem + 12px);
-    height: calc(3rem + 12px);
-    border-radius: 8px;
-    border: 4px solid ${theme.colors.gray800};
-    outline: 2px solid ${theme.colors.green500};
-  `}
-`
 export const Footer = styled.footer`
   ${({ theme }) => css`
     border-top: 1px solid ${theme.colors.gray600};
