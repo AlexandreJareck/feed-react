@@ -5,7 +5,7 @@ import { Container, Box, Content, Footer, Header, Author } from '.'
 export function Comment() {
   return (
     <Container>
-      <img src="#" alt="" />
+      <img src="https://avatars.githubusercontent.com/u/49285794?v=4" alt="" />
       <Box>
         <Content>
           <Header>
@@ -19,7 +19,7 @@ export function Comment() {
               </time>
             </Author>
             <button title="Deletar comentários">
-              <Trash />
+              <Trash size={24} />
             </button>
           </Header>
           <p>Muito bom Devon, parabéns!! 👏👏</p>

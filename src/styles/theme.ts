@@ -17,6 +17,7 @@ export const themeProps = {
     gray800: '#202024',
     gray900: '#121214',
     green300: '#00b37e',
-    green500: '#00875f'
+    green500: '#00875f',
+    red500: '#F75A68'
   }
 } as const
