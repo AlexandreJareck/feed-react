@@ -20,7 +20,7 @@ export function Comment() {
                 title="11 de maio as oito e doze"
                 dateTime="2022-05-11 08:12:00"
               >
-                Cerda de 2h atrás
+                Cerca de 2h atrás
               </time>
             </Author>
             <button title="Deletar comentários">
