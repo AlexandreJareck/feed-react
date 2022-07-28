@@ -16,6 +16,7 @@ import Avatar from '../Avatar/Avatar.component'
 import { Comment } from '../Comment'
 import { format, formatDistanceToNow } from 'date-fns'
 import ptBr from 'date-fns/locale/pt-BR'
+import { useCallback } from 'react'
 
 type ContentType = {
   type: string
@@ -40,6 +41,19 @@ export function Post({ author, publishedAt, content }: PostProps) {
     addSuffix: true
   })
 
+  const ContentMap = useCallback(() => {
+    return content?.map((line) => {
+      if (line.type === 'paragraph') {
+        return <p key={line.content}>{line.content}</p>
+      }
+      return (
+        <p key={line.content}>
+          <a href="#">{line.content}</a>
+        </p>
+      )
+    }) as {} as JSX.Element
+  }, [])
+
   return (
     <Container>
       <Header>
@@ -58,16 +72,7 @@ export function Post({ author, publishedAt, content }: PostProps) {
         </time>
       </Header>
       <Content>
-        {content?.map((line) => {
-          if (line.type === 'paragraph') {
-            return <p>{line.content}</p>
-          }
-          return (
-            <p>
-              <a href="#">{line.content}</a>
-            </p>
-          )
-        })}
+        <ContentMap />
       </Content>
 
       <Form>

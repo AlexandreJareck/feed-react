@@ -11,7 +11,7 @@ export const posts = [
         content:
           'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'
       },
-      { type: 'link', content: '👉 <a href="#">jane.design/doctorcare</a>' }
+      { type: 'link', content: 'jane.design/doctorcare' }
     ],
     publishedAt: new Date('2022-03-01')
   },
@@ -25,7 +25,7 @@ export const posts = [
         content:
           'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'
       },
-      { type: 'link', content: '👉 <a href="#">jane.design/doctorcare</a>' }
+      { type: 'link', content: 'jane.design/doctorcare' }
     ],
     publishedAt: new Date('2022-03-01')
   }
