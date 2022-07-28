@@ -14,14 +14,32 @@ import { author } from '../../data/author'
 import { posts } from '../../data/post'
 import Avatar from '../Avatar/Avatar.component'
 import { Comment } from '../Comment'
+import { format, formatDistanceToNow } from 'date-fns'
+import ptBr from 'date-fns/locale/pt-BR'
+
+type ContentType = {
+  type: string
+  content: string
+}
 
 export type PostProps = {
   author: typeof author
-  content?: Pick<typeof posts[0], 'content'>
-  publishedAt: string
+  content?: ContentType[]
+  publishedAt: Date
 }
 
-export function Post({ author, publishedAt }: PostProps) {
+export function Post({ author, publishedAt, content }: PostProps) {
+  const pusblishedDateFormatted = format(
+    publishedAt,
+    "d 'de' LLLL 'às' HH:mm'h'",
+    { locale: ptBr }
+  )
+
+  const pusblishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+    locale: ptBr,
+    addSuffix: true
+  })
+
   return (
     <Container>
       <Header>
@@ -32,25 +50,24 @@ export function Post({ author, publishedAt }: PostProps) {
             <span>{author.role}</span>
           </AuthorInfo>
         </Author>
-        <time title="11 de maio as oito e doze" dateTime={publishedAt}>
-          Publicado há 1h
+        <time
+          title={pusblishedDateFormatted}
+          dateTime={publishedAt.toISOString()}
+        >
+          {pusblishedDateRelativeToNow}
         </time>
       </Header>
       <Content>
-        <p>Fala galeraa 👋</p>
-        <p>
-          Acabei de subir mais um projeto no meu portifa. É um projeto que fiz
-          no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀
-        </p>
-
-        <p>
-          👉 <a href="#">jane.design/doctorcare</a>
-        </p>
-        <p>
-          <a href="">#novoprojeto </a>
-          <a href="">#nlw </a>
-          <a href="">#rocketseat</a>
-        </p>
+        {content?.map((line) => {
+          if (line.type === 'paragraph') {
+            return <p>{line.content}</p>
+          }
+          return (
+            <p>
+              <a href="#">{line.content}</a>
+            </p>
+          )
+        })}
       </Content>
 
       <Form>

@@ -18,10 +18,7 @@ function App() {
         <Sidebar />
         <main>
           {posts.map((post) => (
-            <Post
-              author={post.author}
-              publishedAt={post.publishedAt.toString()}
-            />
+            <Post author={post.author} publishedAt={post.publishedAt} />
           ))}
         </main>
       </Wrapper>
