@@ -10,24 +10,29 @@ import {
   Button,
   CommentList
 } from '.'
+import { author } from '../../data/author'
+import { posts } from '../../data/post'
 import Avatar from '../Avatar/Avatar.component'
 import { Comment } from '../Comment'
 
-export function Post() {
+export type PostProps = {
+  author: typeof author
+  content?: Pick<typeof posts[0], 'content'>
+  publishedAt: string
+}
+
+export function Post({ author, publishedAt }: PostProps) {
   return (
     <Container>
       <Header>
         <Author>
-          <Avatar
-            src="https://avatars.githubusercontent.com/u/49285794?v=4"
-            hasBorder={true}
-          />
+          <Avatar src={author.avatarUrl} hasBorder={true} />
           <AuthorInfo>
-            <strong>Alexandre Jareck</strong>
-            <span>Fullstack</span>
+            <strong>{author.name}</strong>
+            <span>{author.role}</span>
           </AuthorInfo>
         </Author>
-        <time title="11 de maio as oito e doze" dateTime="2022-05-11 08:12:00">
+        <time title="11 de maio as oito e doze" dateTime={publishedAt}>
           Publicado há 1h
         </time>
       </Header>

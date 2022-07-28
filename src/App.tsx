@@ -7,6 +7,7 @@ import { Sidebar } from './components/Sidebar'
 import { Wrapper } from './App.styles'
 import { themeProps } from './styles/theme'
 import GlobalStyles from './styles/globalStyle'
+import { posts } from './data/post'
 
 function App() {
   return (
@@ -16,8 +17,12 @@ function App() {
       <Wrapper>
         <Sidebar />
         <main>
-          <Post />
-          <Post />
+          {posts.map((post) => (
+            <Post
+              author={post.author}
+              publishedAt={post.publishedAt.toString()}
+            />
+          ))}
         </main>
       </Wrapper>
 
