@@ -11,12 +11,11 @@ import {
   CommentList
 } from '.'
 import { author } from '../../data/author'
-import { posts } from '../../data/post'
 import Avatar from '../Avatar/Avatar.component'
 import { Comment } from '../Comment'
 import { format, formatDistanceToNow } from 'date-fns'
 import ptBr from 'date-fns/locale/pt-BR'
-import { useCallback } from 'react'
+import { FormEvent, useCallback, useState } from 'react'
 
 type ContentType = {
   type: string
@@ -30,6 +29,7 @@ export type PostProps = {
 }
 
 export function Post({ author, publishedAt, content }: PostProps) {
+  const [comments, setComments] = useState([1, 2])
   const pusblishedDateFormatted = format(
     publishedAt,
     "d 'de' LLLL 'às' HH:mm'h'",
@@ -54,6 +54,12 @@ export function Post({ author, publishedAt, content }: PostProps) {
     }) as {} as JSX.Element
   }, [])
 
+  function handleCreateNewComment(e: FormEvent) {
+    e.preventDefault()
+
+    setComments([...comments, comments.length + 1])
+  }
+
   return (
     <Container>
       <Header>
@@ -75,7 +81,7 @@ export function Post({ author, publishedAt, content }: PostProps) {
         <ContentMap />
       </Content>
 
-      <Form>
+      <Form onSubmit={handleCreateNewComment}>
         <Strong>Deixe seu feedback</Strong>
 
         <Textarea placeholder="Deixe um comentário" />
@@ -86,9 +92,9 @@ export function Post({ author, publishedAt, content }: PostProps) {
       </Form>
 
       <CommentList>
-        <Comment />
-        <Comment />
-        <Comment />
+        {comments.map((comment) => (
+          <Comment key={comment} />
+        ))}
       </CommentList>
     </Container>
   )
