@@ -117,8 +117,13 @@ export const Button = styled.footer`
       cursor: pointer;
       transition: background-color 0.2s;
 
-      :hover {
+      :not(:disabled):hover {
         background: ${theme.colors.green300};
+      }
+
+      :disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
       }
     }
   `}
