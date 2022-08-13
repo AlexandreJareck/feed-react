@@ -15,7 +15,7 @@ import Avatar from '../Avatar/Avatar.component'
 import { Comment } from '../Comment'
 import { format, formatDistanceToNow } from 'date-fns'
 import ptBr from 'date-fns/locale/pt-BR'
-import { FormEvent, useCallback, useState } from 'react'
+import { ChangeEvent, FormEvent, useCallback, useRef, useState } from 'react'
 
 type ContentType = {
   type: string
@@ -29,7 +29,10 @@ export type PostProps = {
 }
 
 export function Post({ author, publishedAt, content }: PostProps) {
-  const [comments, setComments] = useState([1, 2])
+  const [comments, setComments] = useState(['Post muito bacana'])
+
+  const [newComment, setNewComment] = useState('')
+
   const pusblishedDateFormatted = format(
     publishedAt,
     "d 'de' LLLL 'às' HH:mm'h'",
@@ -57,7 +60,22 @@ export function Post({ author, publishedAt, content }: PostProps) {
   function handleCreateNewComment(e: FormEvent) {
     e.preventDefault()
 
-    setComments([...comments, comments.length + 1])
+    setComments([...comments, newComment])
+    setNewComment('')
+  }
+
+  function handleNewCommentChange({
+    target
+  }: ChangeEvent<HTMLTextAreaElement>) {
+    if (target?.value) setNewComment(target.value)
+  }
+
+  function deleteComment(commentToDelete: string) {
+    const commentsWithoutDeletedOne = comments.filter((comment) => {
+      return comment !== commentToDelete
+    })
+
+    setComments(commentsWithoutDeletedOne)
   }
 
   return (
@@ -84,16 +102,26 @@ export function Post({ author, publishedAt, content }: PostProps) {
       <Form onSubmit={handleCreateNewComment}>
         <Strong>Deixe seu feedback</Strong>
 
-        <Textarea placeholder="Deixe um comentário" />
+        <Textarea
+          placeholder="Deixe um comentário"
+          value={newComment}
+          onChange={handleNewCommentChange}
+        />
 
         <Button>
-          <button type="submit">Publicar</button>
+          <button type="submit" disabled={newComment.length === 0}>
+            Publicar
+          </button>
         </Button>
       </Form>
 
       <CommentList>
         {comments.map((comment) => (
-          <Comment key={comment} />
+          <Comment
+            key={comment}
+            content={comment}
+            onDeleteComment={deleteComment}
+          />
         ))}
       </CommentList>
     </Container>

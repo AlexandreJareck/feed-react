@@ -3,7 +3,16 @@ import React from 'react'
 import { Container, Box, Content, Footer, Header, Author } from '.'
 import Avatar from '../Avatar/Avatar.component'
 
-export function Comment() {
+type CommentProps = {
+  content: string
+  onDeleteComment: (value: string) => void
+}
+
+export function Comment({ content, onDeleteComment }: CommentProps) {
+  function handleDeleteComment() {
+    onDeleteComment(content)
+  }
+
   return (
     <Container>
       <Avatar
@@ -23,11 +32,11 @@ export function Comment() {
                 Cerca de 2h atrás
               </time>
             </Author>
-            <button title="Deletar comentários">
+            <button title="Deletar comentários" onClick={handleDeleteComment}>
               <Trash size={24} />
             </button>
           </Header>
-          <p>Muito bom Devon, parabéns!! 👏👏</p>
+          <p>{content}</p>
         </Content>
 
         <Footer>
